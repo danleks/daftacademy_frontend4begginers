@@ -1,0 +1,389 @@
+/*
+Przeglądarki internetowe nadają znacznikom HTML wartości początkowe,
+które się różnią w zależności od producenta (np. Chrome, Firefox, Opera, Internet Explorer, Microsoft Edge).
+Dlatego popularną praktyką jest tworzenie tzw. resetów,
+czyli plików CSS zawierających reguły, które nadpisują te wartości,
+aby były one jednolite niezalenie od przeglądarki.
+
+Więcej na ten temat: https://cssreset.com/what-is-a-css-reset/
+*/
+
+/*Declare css variables*/
+:root {
+    --bg-image: url('./images/background.svg');
+
+    /*Colors*/
+    --primary-color: rgba(37, 7, 46, 1);
+
+    --secondary-color: rgba(236, 0, 140, 1);
+    --secondary-color-light: rgba(236, 0, 140, .8);
+    --secondary-color-lighter: rgba(236, 0, 140, .6);
+    --secondary-color-exta-light: rgba(236, 0, 140, .4);
+
+    --tertiary-color: rgba(204, 200, 255, 1);
+    --tertiary-color-light: rgba(204, 200, 255, .8);
+    --tertiary-color-lighter: rgba(204, 200, 255, .5);
+    --tertiary-color-extra-light: rgba(204, 200, 255, .1);
+
+    --color-light: rgba(216, 216, 251, .1);
+
+
+    /*Font Family*/
+    --font-family-primary: 'Open Sans', sans-serif;
+    --font-family-secondary: Helvetica;
+
+    /*Font Sizes*/
+    --font-huge: 28px;
+    --font-large: 15px;
+    --font-medium: 13px;
+    --font-small: 12px;
+
+    /*Font Weight*/
+    --font-bold: 700;
+    --font-semiBold: 600;
+    --font-regular: 400;
+}
+
+html {
+    box-sizing: border-box;
+    background-image: var(--bg-image);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: 101%; /*svg has white borders to the right and left, in order to hide them scaled image 1% more*/
+    background-position: center center;
+    scroll-behavior: smooth;
+}
+  
+* {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family-primary);
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ZAGADNIENIE PONADPROGRAMOWE
+
+Rekomendowany zestaw właściwości, które pozwalają na ukrycie tekstu w taki sposób,
+że będzie niewidoczny do standardowego użytkownika, a czytniki ekranowe wciąż będą go czytać.
+
+Więcej na ten temat: https://webaim.org/techniques/css/invisiblecontent/
+*/
+.screen-reader-only {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/*
+Sekcja pomocnicza, aby zwizualizować pozycje głównych bloków strony. Będzie usunięta w następnych krokach.
+*/
+/* .page-header {
+    background-color: #ffb1b1;
+}
+
+.page-content {
+    background-color: #b0ffb0;
+}
+
+.page-footer {
+    background-color: #7ba3ff;
+} */
+
+/* .content-section {
+    background-color: #25072E;
+} */
+/* .content-section:nth-child(odd) {
+    background-image: url('./images/background.svg');
+} */
+/*
+Koniec sekcji pomocniczej
+*/
+
+/*
+Ustawiając sekcje nagłówka i stopki w pozycji 'fixed' sprawiamy,
+że niezależnie od pozycji paska przewijania elementy te będą znajdowały się
+w tej samej pozycji względem okna przeglądarki.
+Natomiast pozycję tę ustawiamy za pomocą parametrów 'top', 'bottom', 'right', 'left'.
+*/
+.page-header {
+    position: fixed;
+    top: 50px;
+    left: 50px;
+}
+
+.page-footer {
+    position: fixed;
+    bottom: 50px;
+    left: 50px;
+}
+
+/*
+Lewy margines ustawiony na kontenerze z główną zawartością strony sprawia,
+że nie będzie ona nachodzić na nagłówek i stopkę niezależnie od pozycji paska przewijania.
+Na projekcie graficznym sekcja menu ma szerokość około 170px i jest oddalona od krawędzi ekranu
+o 50px, więc można założyć, że 220px marginesu będzie wartością stosunkowo bezpieczną.
+Z kolei spady (padding) nadane na kontener wyznaczają minimalną odległość, na jaką będzie oddalona
+treść strony od otaczających ją granic kontenera (wartość "0 10%" jest
+skrótem od padding-top: 0, padding-bottom: 0, padding-left: 10%, padding-right: 10%).
+Właściwość "text-align: right" przykleja zawartość do prawej strony
+(oddziałuje na elementy, które są elementami inline'owymi, np. tekst, znaczniki <a>, <span> czy elementy z nadanym stylem "display: inline-block").
+*/
+.page-content {
+    margin-left: 220px;
+    padding: 0 10%;
+    text-align: right;
+}
+
+/*
+Projekt graficzny zakłada, że każda sekcja strony będzie wypełniać całą wysokość okna przeglądarki
+lub więcej, jeśli zawartość danej sekcji jest wyższa. Dlatego świetnym rozwiązaniem
+będzie użycie jednostki "vh", która oznacza 1% wysokości okna przeglądarki z właściwością "min-height",
+która wymusza wysokość elementu na zadaną wartość lub wyższą.
+*/
+.content-section {
+    min-height: 100vh;
+}
+
+/* Navigation Styles */
+
+.page-navigation {
+    margin-top: 15px;
+}
+
+.page-navigation__item:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.page-navigation__item a,
+.page-navigation__item a:visited {
+    font-size: var(--font-medium);
+    font-weight: var(--font-bold);
+    letter-spacing: 6.7px;
+    text-transform: uppercase;
+    color: var(--secondary-color-light);
+    text-decoration: none;
+    transition: color .3s ease-out;
+}
+
+.page-navigation__item a:active,
+.page-navigation__item a:focus,
+.page-navigation__item a:hover {
+    color: var(--secondary-color);
+}
+
+.page-navigation__item a:active {
+    font-family: var(--font-family-secondary);
+    letter-spacing: 6.7px;
+}
+
+.page-navigation__item a.isDisabled {
+    color: var(--secondary-color-lighter);
+    cursor: not-allowed;
+}
+
+/* Home section styles */
+
+.band-members {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: inherit;
+}
+
+.band-members__image {
+    opacity: .6;
+    transition: opacity .3s ease-in;
+}
+
+.band-members__name,
+.band-members__desc {
+    opacity: 0;
+    transform: translate(30px, 0);
+    text-align: left;
+    letter-spacing: 3.5px;
+    transition: opacity .3s ease-in;
+}
+
+.band-members__name {
+    font-size: var(--font-medium);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    color: var(--tertiary-color);
+}
+
+.band-members__desc {
+    transform: translate(30px, -8px);
+    font-size: var(--font-small);
+    color: var(--tertiary-color-lighter);
+}
+
+.band-members__item:hover > * {
+    opacity: 1;
+}
+
+/* Common styles */
+
+.content-section__header {
+    font-size: var(--font-huge);
+    letter-spacing: 2.5px;
+    padding: 80px 0 40px;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+}
+
+.button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    font-size: var(--font-small);
+    font-weight: var(--font-semiBold);
+    text-transform: uppercase;
+    color: var(--tertiary-color);
+    background-color: var(--primary-color);
+    cursor: pointer;
+    transition: background-color .3s ease-in;
+}
+
+.button:hover,
+.button:active {
+    background-color: var(--tertiary-color-extra-light);
+}
+
+.button:focus {
+    opacity: .8;
+    outline-color: var(--tertiary-color);
+}
+
+.button:disabled {
+    opacity: 1;
+    color: var(--tertiary-color-lighter);
+    cursor: not-allowed;
+}
+    
+.button:hover:disabled {
+    background-color: var(--primary-color);
+}
+
+/* About section styles */
+
+.about-section {
+    position: relative;
+    width: 100%;
+}
+
+.about-section__img {
+    border-top: 3px solid var(--secondary-color);
+}
+
+.about-section__desc {
+    position: absolute;
+    left: 63px;
+    bottom: 15%;
+    width: 400px;
+    padding: 40px;
+    border-bottom: 3px solid var(--secondary-color);
+    text-align: left;
+    background-color: var(--primary-color);
+}
+
+.about-section__desc-header {
+    padding-bottom: 10px;
+    font-size: var(--font-large);
+    letter-spacing: 3.5px;
+    color: var(--tertiary-color);
+    text-transform: uppercase;
+}
+
+.about-section__desc-details {
+    font-size: var(--font-medium);
+    color: var(--tertiary-color-light);
+    line-height: 1.8;
+}
+
+/* Concerts section */
+
+.concerts {
+    display: grid;
+    grid-template-columns: 400px 400px;
+    gap: 40px;
+    justify-content: flex-end;
+}
+
+.concerts__info {
+    position: relative;
+    padding: 15px 0;
+    text-align: left;
+}
+
+.concerts__info .button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.concerts__image {
+    max-width: 100%;
+}
+
+.concerts__date, .concerts__location {
+    padding: 0;
+    margin: 0;
+    font-size: var(--font-medium);
+    line-height: 1.4;
+    letter-spacing: 3.5px;
+}
+
+.concerts__date {
+    color: var(--tertiary-color)
+}
+
+.concerts__location {
+    color: var(--tertiary-color-lighter);
+}
+
+/* Footer styles */
+
+.social-links__item {
+    width: 22px;
+}
+
+.social-links__item:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.social-links__link {
+    width: 100%;
+}
+
+.social-links__icon {
+    display: inline-block;
+    width: 100%;
+    opacity: .6;
+    transition: opacity .3s ease-in;
+}
+
+.social-links__item:hover > .social-links__link > .social-links__icon {
+    opacity: 1;
+}
