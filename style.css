@@ -1,15 +1,6 @@
-/*
-Przeglądarki internetowe nadają znacznikom HTML wartości początkowe,
-które się różnią w zależności od producenta (np. Chrome, Firefox, Opera, Internet Explorer, Microsoft Edge).
-Dlatego popularną praktyką jest tworzenie tzw. resetów,
-czyli plików CSS zawierających reguły, które nadpisują te wartości,
-aby były one jednolite niezalenie od przeglądarki.
-
-Więcej na ten temat: https://cssreset.com/what-is-a-css-reset/
-*/
-
 /*Declare css variables*/
 :root {
+    /*Main background image*/
     --bg-image: url('./images/background.svg');
 
     /*Colors*/
@@ -18,7 +9,7 @@ Więcej na ten temat: https://cssreset.com/what-is-a-css-reset/
     --secondary-color: rgba(236, 0, 140, 1);
     --secondary-color-light: rgba(236, 0, 140, .8);
     --secondary-color-lighter: rgba(236, 0, 140, .6);
-    --secondary-color-exta-light: rgba(236, 0, 140, .4);
+    --secondary-color-extra-light: rgba(236, 0, 140, .4);
 
     --tertiary-color: rgba(204, 200, 255, 1);
     --tertiary-color-light: rgba(204, 200, 255, .8);
@@ -44,12 +35,23 @@ Więcej na ten temat: https://cssreset.com/what-is-a-css-reset/
     --font-regular: 400;
 }
 
+/* Common styles, css reset*/
+/*
+Przeglądarki internetowe nadają znacznikom HTML wartości początkowe,
+które się różnią w zależności od producenta (np. Chrome, Firefox, Opera, Internet Explorer, Microsoft Edge).
+Dlatego popularną praktyką jest tworzenie tzw. resetów,
+czyli plików CSS zawierających reguły, które nadpisują te wartości,
+aby były one jednolite niezalenie od przeglądarki.
+
+Więcej na ten temat: https://cssreset.com/what-is-a-css-reset/
+*/
+
 html {
     box-sizing: border-box;
     background-image: var(--bg-image);
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-size: 101%; /*svg has white borders to the right and left, in order to hide them scaled image 1% more*/
+    background-size: 101%; /*the svg has transparent borders to the right and left, in order to hide them scaled svg image 1% more*/
     background-position: center center;
     scroll-behavior: smooth;
 }
@@ -165,97 +167,18 @@ która wymusza wysokość elementu na zadaną wartość lub wyższą.
     min-height: 100vh;
 }
 
-/* Navigation Styles */
-
-.page-navigation {
-    margin-top: 15px;
-}
-
-.page-navigation__item:not(:last-child) {
-    margin-bottom: 10px;
-}
-
-.page-navigation__item a,
-.page-navigation__item a:visited {
-    font-size: var(--font-medium);
-    font-weight: var(--font-bold);
-    letter-spacing: 6.7px;
-    text-transform: uppercase;
-    color: var(--secondary-color-light);
-    text-decoration: none;
-    transition: color .3s ease-out;
-}
-
-.page-navigation__item a:active,
-.page-navigation__item a:focus,
-.page-navigation__item a:hover {
-    color: var(--secondary-color);
-}
-
-.page-navigation__item a:active {
-    font-family: var(--font-family-secondary);
-    letter-spacing: 6.7px;
-}
-
-.page-navigation__item a.isDisabled {
-    color: var(--secondary-color-lighter);
-    cursor: not-allowed;
-}
-
-/* Home section styles */
-
-.band-members {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: inherit;
-}
-
-.band-members__image {
-    opacity: .6;
-    transition: opacity .3s ease-in;
-}
-
-.band-members__name,
-.band-members__desc {
-    opacity: 0;
-    transform: translate(30px, 0);
-    text-align: left;
-    letter-spacing: 3.5px;
-    transition: opacity .3s ease-in;
-}
-
-.band-members__name {
-    font-size: var(--font-medium);
-    font-weight: var(--font-bold);
-    text-transform: uppercase;
-    color: var(--tertiary-color);
-}
-
-.band-members__desc {
-    transform: translate(30px, -8px);
-    font-size: var(--font-small);
-    color: var(--tertiary-color-lighter);
-}
-
-.band-members__item:hover > * {
-    opacity: 1;
-}
-
-/* Common styles */
-
 .content-section__header {
     font-size: var(--font-huge);
-    letter-spacing: 2.5px;
-    padding: 80px 0 40px;
+    letter-spacing: 4.5px;
+    line-height: 4;
     color: var(--secondary-color);
     text-transform: uppercase;
 }
 
 .button {
     padding: 10px 15px;
-    border: none;
-    border-radius: 6px;
+    border: 1px solid var(--tertiary-color-extra-light);
+    border-radius: 4px;
     font-size: var(--font-small);
     font-weight: var(--font-semiBold);
     text-transform: uppercase;
@@ -271,18 +194,98 @@ która wymusza wysokość elementu na zadaną wartość lub wyższą.
 }
 
 .button:focus {
-    opacity: .8;
+    background-color: var(--tertiary-color-extra-light);
     outline-color: var(--tertiary-color);
 }
 
-.button:disabled {
-    opacity: 1;
+.button:disabled,
+.button:hover:disabled {
     color: var(--tertiary-color-lighter);
+    background-color: var(--primary-color);
     cursor: not-allowed;
 }
-    
-.button:hover:disabled {
-    background-color: var(--primary-color);
+
+/* End of common styles */
+
+/* Navigation Styles */
+
+.page-navigation {
+    margin-top: 15px;
+}
+
+.page-navigation__item:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.page-navigation__item a {
+    font-size: var(--font-medium);
+    font-weight: var(--font-bold);
+    letter-spacing: 6.7px;
+    text-transform: uppercase;
+    color: var(--secondary-color-light);
+    text-decoration: none;
+    transition: color .3s ease-out, letter-spacing .3s ease-out;
+}
+
+.page-navigation__item a:visited {
+    color: var(--secondary-color-lighter);
+}
+
+.page-navigation__item a:hover,
+.page-navigation__item a:active,
+.page-navigation__item a:focus {
+    color: var(--secondary-color);
+    letter-spacing: 6.5px;
+    outline: none;
+}
+
+.page-navigation__item a.isDisabled,
+.page-navigation__item a.isDisabled:hover {
+    color: var(--secondary-color-extra-light);
+    letter-spacing: 6.7px;
+    cursor: not-allowed;
+}
+
+/* Home section styles */
+
+.band-members {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: inherit;
+}
+
+.band-members__image {
+    opacity: .6;
+    transition: opacity .3s ease-in;
+}
+
+.band-members__name,
+.band-members__desc {
+    opacity: 0;
+    transform: translate(30px, 0);
+    text-align: left;
+    transition: opacity .3s ease-in;
+}
+
+.band-members__name {
+    font-size: var(--font-large);
+    font-weight: var(--font-bold);
+    letter-spacing: 3.8px;
+    text-transform: uppercase;
+    color: var(--tertiary-color);
+}
+
+.band-members__desc {
+    transform: translate(30px, -8px);
+    font-size: var(--font-small);
+    font-weight: var(--font-regular);
+    letter-spacing: 3.5px;
+    color: var(--tertiary-color-lighter);
+}
+
+.band-members__item:hover > * {
+    opacity: 1;
 }
 
 /* About section styles */
@@ -298,10 +301,10 @@ która wymusza wysokość elementu na zadaną wartość lub wyższą.
 
 .about-section__desc {
     position: absolute;
-    left: 63px;
-    bottom: 15%;
-    width: 400px;
-    padding: 40px;
+    left: 8%;
+    bottom: 21%;
+    width: 405px;
+    padding: 45px;
     border-bottom: 3px solid var(--secondary-color);
     text-align: left;
     background-color: var(--primary-color);
@@ -310,15 +313,16 @@ która wymusza wysokość elementu na zadaną wartość lub wyższą.
 .about-section__desc-header {
     padding-bottom: 10px;
     font-size: var(--font-large);
-    letter-spacing: 3.5px;
+    letter-spacing: 3.8px;
     color: var(--tertiary-color);
     text-transform: uppercase;
 }
 
 .about-section__desc-details {
     font-size: var(--font-medium);
+    letter-spacing: 1.5px;
     color: var(--tertiary-color-light);
-    line-height: 1.8;
+    line-height: 1.4;
 }
 
 /* Concerts section */
@@ -345,6 +349,7 @@ która wymusza wysokość elementu na zadaną wartość lub wyższą.
 
 .concerts__image {
     max-width: 100%;
+    height: auto;
 }
 
 .concerts__date, .concerts__location {
@@ -352,15 +357,112 @@ która wymusza wysokość elementu na zadaną wartość lub wyższą.
     margin: 0;
     font-size: var(--font-medium);
     line-height: 1.4;
-    letter-spacing: 3.5px;
 }
 
 .concerts__date {
-    color: var(--tertiary-color)
+    font-size: var(--font-large);
+    font-weight: var(--font-bold);
+    color: var(--tertiary-color);
+    letter-spacing: 3.8px;
 }
 
 .concerts__location {
+    font-weight: var(--font-semiBold);
     color: var(--tertiary-color-lighter);
+    letter-spacing: 3.5px;
+}
+
+/* Video section styles */
+
+.video-player {
+    border-top: 3px solid var(--secondary-color);
+}
+
+/* Photos section styles*/
+
+.gallery {
+    display: grid;
+    grid-template-columns: 350px 350px 350px;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.gallery__item {
+    border-top: 3px solid var(--secondary-color);
+    transition: transform .2s ease-in;
+}
+
+.gallery__item:hover {
+    transform: scale(1.02);
+}
+
+.gallery__image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Contact section styles */
+.contact-section__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 70px;
+    row-gap: 30px;
+    justify-content: flex-end;
+}
+
+.contact-section__address {
+    justify-self: flex-start;
+    align-self: center;
+    font-size: var(--font-medium);
+    font-style: normal;
+    text-align: left;
+    letter-spacing: 1.5px;
+    color: var(--tertiary-color);
+}
+
+.contact-section__form {
+    justify-self: flex-start;
+}
+
+.form {
+    width: 100%;
+}
+
+.form__field {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: var(--font-medium);
+    letter-spacing: 1.5px;
+    color: var(--tertiary-color);
+}
+
+/* .form__field:not(:last-child) {
+    margin-bottom: 5px;
+} */
+
+.form__field:last-child {
+    margin-top: 25px;
+}
+
+.form__label {
+    line-height: 3;
+}
+
+.form__input {
+    width: 55%;
+    padding: 10px 0;
+    border: 1px solid var(--tertiary-color-extra-light);
+    border-radius: 4px;
+    font-size: var(--font-medium);
+    letter-spacing: 1.5px;
+    color: var(--tertiary-color);
+    background-color: var(--tertiary-color-extra-light);
+}
+
+.form__input:focus {
+    outline-color: var(--tertiary-color);
 }
 
 /* Footer styles */
@@ -377,13 +479,30 @@ która wymusza wysokość elementu na zadaną wartość lub wyższą.
     width: 100%;
 }
 
-.social-links__icon {
-    display: inline-block;
-    width: 100%;
+.social-links__link:visited > .social-links__icon {
     opacity: .6;
-    transition: opacity .3s ease-in;
 }
 
-.social-links__item:hover > .social-links__link > .social-links__icon {
+.social-links__item:hover > .social-links__link > .social-links__icon,
+.social-links__link:active > .social-links__link > .social-links__icon,
+.social-links__link:focus > .social-links__icon {
     opacity: 1;
+}
+
+.social-links__link.isDisabled > .social-links__icon,
+.social-links__link.isDisabled:hover > .social-links__icon {
+    opacity: .4;
+    cursor: not-allowed;
+}
+
+.social-links__link:focus {
+    outline: none;
+}
+
+.social-links__icon {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+    opacity: .8;
+    transition: opacity .3s ease-in;
 }
