@@ -4,6 +4,8 @@
         <title>6BM Band Official Website</title>
         <link rel="stylesheet" type="text/css" href="./style.css" />
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/png" href="./images/logo.png">
+        <meta name="description" content="6BM is a young band which has it's origins in the city of Lublin, playing music described as electrorock.">
     </head>
     <body>
         <header class="page-header">
@@ -129,7 +131,7 @@
             </section>
             <section id="video" class="content-section">
                 <h2 class="content-section__header">Video</h2>
-                <iframe width="853" height="480" src="https://www.youtube.com/embed/AstRXh-vKNI?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                <iframe class="video-player" width="853" height="480" src="https://www.youtube.com/embed/AstRXh-vKNI?rel=0&mute=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             </section>
             <section id="photos" class="content-section">
                 <h2 class="content-section__header">Photos</h2>
@@ -163,26 +165,28 @@
                     </li>
                 </ul>
             </section>
-            <section id="contact" class="content-section">
+            <section id="contact" class="content-section contact-section">
                 <h2 class="content-section__header">Contact</h2>
-                <img class="gallery__image" src="./images/band12.jpg" alt="Image of band members posing next to a train" />
-                <address>
-                    Tel: 123 456 789<br/>
-                    E-mail: 6bmmusic@gmail.com
-                </address>
-                <form class="form">
-                    <div class="form__field">
-                        <label class="form__label" for="email">E-mail</label>
-                        <input class="form__input" type="email" name="email" id="email" required />
-                    </div>
-                    <div class="form__field">
-                        <label class="form__label" for="topic">Topic</label>
-                        <input class="form__input" type="text" name="topic" id="topic" required />
-                    </div>
-                    <div class="form__field">
-                        <button class="button" type="submit">Contact us!</button>
-                    </div>
-                </form>
+                <div class="contact-section__wrapper">
+                    <img class="gallery__image" src="./images/band12.jpg" alt="Image of band members posing next to a train" />
+                    <address class="contact-section__address">
+                        Tel: 123 456 789<br/>
+                        E-mail: 6bmmusic@gmail.com
+                    </address>
+                    <form class="contact-section__form form">
+                        <div class="form__field">
+                            <label class="form__label" for="email">E-mail</label>
+                            <input class="form__input" type="email" name="email" id="email" required />
+                        </div>
+                        <div class="form__field">
+                            <label class="form__label" for="topic">Topic</label>
+                            <input class="form__input" type="text" name="topic" id="topic" required />
+                        </div>
+                        <div class="form__field">
+                            <button class="button" type="submit">Contact us!</button>
+                        </div>
+                    </form>
+                </div>
             </section>
         </main>
         <footer class="page-footer">
@@ -193,22 +197,22 @@
             <h2 class="screen-reader-only">Social media links</h2>
             <ul class="social-links">
                 <li class="social-links__item">
-                    <a class="social-links__link" href="http://facebook.com/">
+                    <a class="social-links__link" href="http://facebook.com/" target="_blank" rel="noopener noreferrer">
                         <img class="social-links__icon" src="./images/fb.svg" alt="facebook"/>
                     </a>
                 </li>
                 <li class="social-links__item">
-                    <a class="social-links__link" href="http://instagram.com/">
+                    <a class="social-links__link" href="http://instagram.com/" target="_blank" rel="noopener noreferrer">
                         <img class="social-links__icon" src="./images/insta.svg" alt="instagram"/>
                     </a>
                 </li>
                 <li class="social-links__item">
-                    <a class="social-links__link" href="http://last.fm/">
+                    <a class="social-links__link" href="http://last.fm/" target="_blank" rel="noopener noreferrer">
                         <img class="social-links__icon" src="./images/last.svg" alt="last.fm"/>
                     </a>
                 </li>
                 <li class="social-links__item">
-                    <a class="social-links__link" href="http://youtube.com/">
+                    <a class="social-links__link" href="http://youtube.com/" target="_blank" rel="noopener noreferrer">
                         <img class="social-links__icon" src="./images/yout.svg" alt="youtube"/>
                     </a>
                 </li>
