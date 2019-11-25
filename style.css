@@ -51,7 +51,7 @@ html {
     background-image: var(--bg-image);
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-size: 101%; /*the svg has transparent borders to the right and left, in order to hide them scaled svg image 1% more*/
+    background-size: cover;
     background-position: center center;
     scroll-behavior: smooth;
 }
@@ -438,10 +438,6 @@ która wymusza wysokość elementu na zadaną wartość lub wyższą.
     color: var(--tertiary-color);
 }
 
-/* .form__field:not(:last-child) {
-    margin-bottom: 5px;
-} */
-
 .form__field:last-child {
     margin-top: 25px;
 }
@@ -484,7 +480,7 @@ która wymusza wysokość elementu na zadaną wartość lub wyższą.
 }
 
 .social-links__item:hover > .social-links__link > .social-links__icon,
-.social-links__link:active > .social-links__link > .social-links__icon,
+.social-links__link:active > .social-links__icon,
 .social-links__link:focus > .social-links__icon {
     opacity: 1;
 }
