@@ -19,7 +19,7 @@
         </radialGradient>
     </defs>
     <g id="bg_full" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Rectangle" fill="#180421" x="2" y="0" width="1437" height="800"></rect>
+        <rect id="Rectangle" fill="#180421" x="-1" y="0" width="1446" height="800"></rect>
         <g id="bg" opacity="0.503231957">
             <mask id="mask-2" fill="white">
                 <use xlink:href="#path-1"></use>
