@@ -24,15 +24,20 @@
     --font-family-secondary: Helvetica;
 
     /*Font Sizes*/
-    --font-huge: 28px;
-    --font-large: 15px;
-    --font-medium: 13px;
-    --font-small: 12px;
+    --font-huge: 2.8rem;
+    --font-large: 1.5rem;
+    --font-medium: 1.3rem;
+    --font-small: 1.2rem;
+    --font-extra-small: 1rem;
 
     /*Font Weight*/
     --font-bold: 700;
     --font-semiBold: 600;
     --font-regular: 400;
+
+    /* z-index */
+    --z-index-100: 100;
+    --z-index-90: 90;
 }
 
 /* Common styles, css reset*/
@@ -54,6 +59,8 @@ html {
     background-size: cover;
     background-position: center center;
     scroll-behavior: smooth;
+
+    font-size: 62.5%; /* Now 10px = 1rem! */
 }
   
 * {
@@ -67,10 +74,12 @@ html {
 body {
     margin: 0;
     padding: 0;
+    font-size: 16px; /* px fallback */
+    font-size: 1.6rem; /* default font-size for document */
     font-family: var(--font-family-primary);
 }
 
-h1, h2, h3 {
+h1, h2, h3, p {
     margin: 0;
 }
 
@@ -130,14 +139,42 @@ Natomiast pozycję tę ustawiamy za pomocą parametrów 'top', 'bottom', 'right'
 */
 .page-header {
     position: fixed;
-    top: 50px;
-    left: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100vw;
+    padding: 1rem 2rem 1rem;
+    z-index: var(--z-index-100);
+    background-color: var(--primary-color);
+}
+
+@media(min-width: 768px) {
+    .page-header {
+        padding: 1.5rem 4rem;
+    }
+}
+
+@media(min-width: 900px) {
+    .page-header {
+        position: fixed;
+        top: 5rem;
+        left: 5rem;
+    }
 }
 
 .page-footer {
-    position: fixed;
-    bottom: 50px;
-    left: 50px;
+    display: flex;
+    align-items: flex-end;
+    height: 10rem;
+}
+
+@media(min-width: 900px) {
+    .page-footer {
+        position: fixed;
+        bottom: 5rem;
+        left: 5rem;
+    }
 }
 
 /*
@@ -152,9 +189,24 @@ Właściwość "text-align: right" przykleja zawartość do prawej strony
 (oddziałuje na elementy, które są elementami inline'owymi, np. tekst, znaczniki <a>, <span> czy elementy z nadanym stylem "display: inline-block").
 */
 .page-content {
-    margin-left: 220px;
-    padding: 0 10%;
-    text-align: right;
+    display: grid;
+    grid-auto-columns: 1fr;
+    padding: 5rem 3rem 0;
+}
+
+@media(min-width: 768px) {
+    .page-content {
+        padding: 8rem 3rem 0;
+    }
+}
+
+@media(min-width: 900px) {
+    .page-content {
+        display: block;
+        margin-left: 22rem;
+        padding: 0 10%;
+        text-align: right;
+    }
 }
 
 /*
@@ -163,20 +215,34 @@ lub więcej, jeśli zawartość danej sekcji jest wyższa. Dlatego świetnym roz
 będzie użycie jednostki "vh", która oznacza 1% wysokości okna przeglądarki z właściwością "min-height",
 która wymusza wysokość elementu na zadaną wartość lub wyższą.
 */
-.content-section {
-    min-height: 100vh;
+
+@media(min-width: 900px) {
+    .content-section {
+        min-height: 100vh;
+    }    
 }
 
 .content-section__header {
     font-size: var(--font-huge);
     letter-spacing: 4.5px;
     line-height: 4;
+    text-align: center;
     color: var(--secondary-color);
     text-transform: uppercase;
 }
 
+@media(min-width: 900px) {
+    .content-section__header {
+        font-size: var(--font-huge);
+        letter-spacing: 4.5px;
+        line-height: 4;
+        color: var(--secondary-color);
+        text-transform: uppercase;
+    } 
+}
+
 .button {
-    padding: 10px 15px;
+    padding: 1rem 1.5rem;
     border: 1px solid var(--tertiary-color-extra-light);
     border-radius: 4px;
     font-size: var(--font-small);
@@ -207,18 +273,97 @@ która wymusza wysokość elementu na zadaną wartość lub wyższą.
 
 /* End of common styles */
 
+/* Logo styles */
+
+.page-logo {
+    max-width: 50%;
+}
+
+@media(min-width: 900px) {
+    .page-logo {
+        width: 100%;
+    }
+}
+
+
+/* Hamburger menu styles */
+
+.page-hamburger {
+    display: flex;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    border: none;
+    margin: 0;
+    z-index: var(--z-index-100);
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.page-hamburger__inner {
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background-color: var(--secondary-color);
+}
+
+.page-hamburger__inner::before,
+.page-hamburger__inner::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px; 
+    background-color: var(--secondary-color);
+}
+
+.page-hamburger__inner::before {
+    top: -7px;
+}
+
+.page-hamburger__inner::after {
+    top: 7px;
+}
+
+
 /* Navigation Styles */
 
+.page-brand {
+    z-index: var(--z-index-100);
+}
+
 .page-navigation {
-    margin-top: 15px;
+    display: none;
+    flex: 0 1 100%;
+    background-color: var(--primary-color);
 }
 
-.page-navigation__item:not(:last-child) {
-    margin-bottom: 10px;
+@media(min-width: 768px) {
+    .page-navigation {
+        padding: 1rem 0 2rem;
+    }
 }
 
-.page-navigation__item a {
-    font-size: var(--font-medium);
+.page-navigation.visible {
+   display: block;
+}
+
+@media(min-width: 900px) {
+    .page-navigation {
+        display: block;
+        margin-top: 1.5rem;
+    }
+}
+
+@media(min-width: 900px) {
+    .page-navigation__item:not(:last-child) {
+        margin-bottom: 1rem;
+    }
+}
+
+.page-navigation__link {
+    font-size: var(--font-extra-small);
     font-weight: var(--font-bold);
     letter-spacing: 6.7px;
     text-transform: uppercase;
@@ -227,20 +372,32 @@ która wymusza wysokość elementu na zadaną wartość lub wyższą.
     transition: color .3s ease-out, letter-spacing .3s ease-out;
 }
 
-.page-navigation__item a:visited {
+@media(min-width: 900px) {
+    .page-navigation__link {
+        font-size: var(--font-medium);
+        font-weight: var(--font-bold);
+        letter-spacing: 6.7px;
+        text-transform: uppercase;
+        color: var(--secondary-color-light);
+        text-decoration: none;
+        transition: color .3s ease-out, letter-spacing .3s ease-out;
+    }
+}
+
+.page-navigation__link:visited {
     color: var(--secondary-color-lighter);
 }
 
-.page-navigation__item a:hover,
-.page-navigation__item a:active,
-.page-navigation__item a:focus {
+.page-navigation__link:hover,
+.page-navigation__link:active,
+.page-navigation__link:focus {
     color: var(--secondary-color);
     letter-spacing: 6.5px;
     outline: none;
 }
 
-.page-navigation__item a.isDisabled,
-.page-navigation__item a.isDisabled:hover {
+.page-navigation__link.disabled,
+.page-navigation__link.disabled:hover {
     color: var(--secondary-color-extra-light);
     letter-spacing: 6.7px;
     cursor: not-allowed;
@@ -250,42 +407,114 @@ która wymusza wysokość elementu na zadaną wartość lub wyższą.
 
 .band-members {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    min-height: inherit;
+    justify-content: center;
+}
+
+@media(min-width: 768px) {
+    .band-members {
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+}
+
+@media(min-width: 900px) {
+    .band-members {
+        align-items: center;
+        justify-content: flex-start;
+        min-height: inherit;
+    } 
+}
+
+.band-members__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3rem 0;
+}
+
+@media(min-width: 768px) {
+    .band-members__item {
+        flex: 0 1 50%;
+    }
 }
 
 .band-members__image {
-    opacity: .6;
-    transition: opacity .3s ease-in;
+    max-width: 70%;
+}
+
+@media(min-width: 768px) {
+    .band-members__image {
+        max-width: 100%;
+    }
+}
+
+
+@media(min-width: 900px){
+    .band-members__image {
+        opacity: .6;
+        transition: opacity .3s ease-in;
+    }
 }
 
 .band-members__name,
 .band-members__desc {
-    opacity: 0;
-    transform: translate(30px, 0);
-    text-align: left;
-    transition: opacity .3s ease-in;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+@media(min-width: 900px) {
+    .band-members__name,
+    .band-members__desc {
+        opacity: 0;
+        transform: translate(30px, 0);
+        text-align: left;
+        transition: opacity .3s ease-in;
+    }
 }
 
 .band-members__name {
-    font-size: var(--font-large);
+    font-size: var(--font-small);
     font-weight: var(--font-bold);
     letter-spacing: 3.8px;
     text-transform: uppercase;
     color: var(--tertiary-color);
 }
 
+@media(min-width: 900px) {
+    .band-members__name {
+        font-size: var(--font-large);
+        font-weight: var(--font-bold);
+        letter-spacing: 3.8px;
+        text-transform: uppercase;
+        color: var(--tertiary-color);
+    }
+}
+
 .band-members__desc {
-    transform: translate(30px, -8px);
-    font-size: var(--font-small);
+    font-size: var(--font-extra-small);
     font-weight: var(--font-regular);
+    line-height: 2;
     letter-spacing: 3.5px;
     color: var(--tertiary-color-lighter);
 }
 
-.band-members__item:hover > * {
-    opacity: 1;
+@media(min-width: 900px) {
+    .band-members__desc {
+        transform: translate(3rem, -8px);
+        font-size: var(--font-small);
+        font-weight: var(--font-regular);
+        letter-spacing: 3.5px;
+        color: var(--tertiary-color-lighter);
+    }
+}
+
+@media(min-width: 900px) {
+    .band-members__item:hover > * {
+        opacity: 1;
+    }
 }
 
 /* About section styles */
@@ -296,26 +525,53 @@ która wymusza wysokość elementu na zadaną wartość lub wyższą.
 }
 
 .about-section__img {
+    max-width: 100%;
     border-top: 3px solid var(--secondary-color);
 }
 
+@media(min-width: 900px) {
+    .about-section__img {
+        border-top: 3px solid var(--secondary-color);
+    }
+}
+
 .about-section__desc {
-    position: absolute;
-    left: 8%;
-    bottom: 21%;
-    width: 405px;
-    padding: 45px;
+    width: 100%;
+    padding: 3rem;
     border-bottom: 3px solid var(--secondary-color);
     text-align: left;
     background-color: var(--primary-color);
 }
 
+@media(min-width: 900px) {
+    .about-section__desc {
+        position: absolute;
+        left: 8%;
+        bottom: 21%;
+        width: 40.5rem;
+        padding: 4.5rem;
+        border-bottom: 3px solid var(--secondary-color);
+        text-align: left;
+        background-color: var(--primary-color);
+    }
+}
+
 .about-section__desc-header {
-    padding-bottom: 10px;
+    padding-bottom: 2rem;
     font-size: var(--font-large);
     letter-spacing: 3.8px;
     color: var(--tertiary-color);
     text-transform: uppercase;
+}
+
+@media(min-width: 900px) {
+    .about-section__desc-header {
+        padding-bottom: 1rem;
+        font-size: var(--font-large);
+        letter-spacing: 3.8px;
+        color: var(--tertiary-color);
+        text-transform: uppercase;
+    } 
 }
 
 .about-section__desc-details {
@@ -329,14 +585,21 @@ która wymusza wysokość elementu na zadaną wartość lub wyższą.
 
 .concerts {
     display: grid;
-    grid-template-columns: 400px 400px;
-    gap: 40px;
-    justify-content: flex-end;
+    grid-auto-columns: 100%;
+    gap: 4rem;
+}
+
+@media(min-width: 900px) {
+    .concerts {
+        grid-template-columns: 40rem 40rem;
+        gap: 4rem;
+        justify-content: flex-end;
+    } 
 }
 
 .concerts__info {
     position: relative;
-    padding: 15px 0;
+    padding: 1.5rem 0;
     text-align: left;
 }
 
@@ -376,7 +639,15 @@ która wymusza wysokość elementu na zadaną wartość lub wyższą.
 /* Video section styles */
 
 .video-player {
+    max-width: 100%;
+    height: auto;
     border-top: 3px solid var(--secondary-color);
+}
+
+@media(min-width: 900px) {
+    .video-player {
+        border-top: 3px solid var(--secondary-color);
+    }
 }
 
 /* Photos section styles*/
@@ -385,23 +656,32 @@ która wymusza wysokość elementu na zadaną wartość lub wyższą.
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
-    margin-right: -20px; /* set gallery to the start of the x axis */
+    margin-right: -2rem; /* set gallery to the start of the x axis */
 }
 
 .gallery__item {
-    flex: 0 1 350px;
+    flex: 0 1 35rem;
     border-top: 3px solid var(--secondary-color);
-    margin: 0 20px 20px 0;
+    margin: 0 2rem 2rem 0;
     transition: transform .2s ease-in;
 }
 
 @supports(display: grid) {
     .gallery {
         display: grid;
-        grid-template-columns: 350px 350px 350px;
-        justify-content: flex-end;
-        gap: 20px;
+        grid-auto-columns: 100%;
+        gap: 2rem;
         margin: 0;
+    }
+
+    @media(min-width: 900px) {
+        .gallery {
+            display: grid;
+            grid-template-columns: 35rem 35rem 35rem;
+            justify-content: flex-end;
+            gap: 2rem;
+            margin: 0;
+        }
     }
 
     .gallery__item {
@@ -425,20 +705,42 @@ która wymusza wysokość elementu na zadaną wartość lub wyższą.
 /* Contact section styles */
 .contact-section__wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 70px;
-    row-gap: 30px;
+    grid-template-columns: 1fr;
+    column-gap: 7rem;
+    row-gap: 3rem;
     justify-content: flex-end;
 }
 
+@media(min-width: 900px) {
+    .contact-section__wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 7rem;
+        row-gap: 3rem;
+        justify-content: flex-end;
+    }
+}
+
 .contact-section__address {
-    justify-self: flex-start;
+    justify-self: center;
     align-self: center;
     font-size: var(--font-medium);
     font-style: normal;
-    text-align: left;
+    text-align: center;
     letter-spacing: 1.5px;
     color: var(--tertiary-color);
+}
+
+@media(min-width: 900px) {
+    .contact-section__address {
+        justify-self: flex-start;
+        align-self: center;
+        font-size: var(--font-medium);
+        font-style: normal;
+        text-align: left;
+        letter-spacing: 1.5px;
+        color: var(--tertiary-color);
+    }
 }
 
 .contact-section__form {
@@ -459,7 +761,14 @@ która wymusza wysokość elementu na zadaną wartość lub wyższą.
 }
 
 .form__field:last-child {
-    margin-top: 25px;
+    align-items: center;
+    margin-top: 2.5rem;
+}
+
+@media(min-width: 900px) {
+    .form__field:last-child {
+        align-items: flex-start;
+    }
 }
 
 .form__label {
@@ -467,8 +776,8 @@ która wymusza wysokość elementu na zadaną wartość lub wyższą.
 }
 
 .form__input {
-    width: 55%;
-    padding: 10px 0;
+    width: 100%;
+    padding: 1rem 0;
     border: 1px solid var(--tertiary-color-extra-light);
     border-radius: 4px;
     font-size: var(--font-medium);
@@ -477,18 +786,43 @@ która wymusza wysokość elementu na zadaną wartość lub wyższą.
     background-color: var(--tertiary-color-extra-light);
 }
 
+@media(min-width: 900px) {
+    .form__input {
+        width: 55%;
+        padding: 1rem 0;
+        border: 1px solid var(--tertiary-color-extra-light);
+        border-radius: 4px;
+        font-size: var(--font-medium);
+        letter-spacing: 1.5px;
+        color: var(--tertiary-color);
+        background-color: var(--tertiary-color-extra-light);
+    }
+}
+
 .form__input:focus {
     outline-color: var(--tertiary-color);
 }
 
 /* Footer styles */
 
+.social-links {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+@media(min-width: 900px) {
+    .social-links {
+        display: block;
+    }
+}
+
 .social-links__item {
-    width: 22px;
+    width: 2.2rem;
 }
 
 .social-links__item:not(:last-child) {
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
 }
 
 .social-links__link {
