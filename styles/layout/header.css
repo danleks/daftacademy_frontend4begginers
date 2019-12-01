@@ -1,0 +1,37 @@
+/*
+Ustawiając sekcje nagłówka i stopki w pozycji 'fixed' sprawiamy,
+że niezależnie od pozycji paska przewijania elementy te będą znajdowały się
+w tej samej pozycji względem okna przeglądarki.
+Natomiast pozycję tę ustawiamy za pomocą parametrów 'top', 'bottom', 'right', 'left'.
+*/
+
+.page-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100vw;
+    padding: 1rem 2rem 1rem;
+    z-index: var(--z-index-100);
+    background-color: var(--primary-color);
+}
+
+@media(min-width: 768px) {
+    .page-header {
+        padding: 1.5rem 4rem;
+    }
+}
+
+@media(min-width: 1050px) {
+    .page-header {
+        top: 5rem;
+        left: 5rem;
+        display: block;
+        width: auto;
+        padding: 0;
+        background-color: transparent;
+    }
+}

@@ -1,0 +1,48 @@
+/* Hamburger menu styles */
+
+.page-hamburger {
+    display: flex;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+    border: none;
+    margin: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.page-hamburger:focus {
+    outline: none;
+}
+
+@media(min-width: 1050px) {
+    .page-hamburger {
+        display: none;
+    }
+}
+
+.page-hamburger__inner {
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background-color: var(--secondary-color);
+}
+
+.page-hamburger__inner::before,
+.page-hamburger__inner::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px; 
+    background-color: var(--secondary-color);
+}
+
+.page-hamburger__inner::before {
+    top: -7px;
+}
+
+.page-hamburger__inner::after {
+    top: 7px;
+}

@@ -1,0 +1,40 @@
+/*Declare css variables*/
+:root {
+    /*Main background image*/
+    --bg-image: url('../../images/background.svg');
+
+    /*Colors*/
+    --primary-color: rgba(37, 7, 46, 1);
+
+    --secondary-color: rgba(236, 0, 140, 1);
+    --secondary-color-light: rgba(236, 0, 140, .8);
+    --secondary-color-lighter: rgba(236, 0, 140, .6);
+    --secondary-color-extra-light: rgba(236, 0, 140, .4);
+
+    --tertiary-color: rgba(204, 200, 255, 1);
+    --tertiary-color-light: rgba(204, 200, 255, .8);
+    --tertiary-color-lighter: rgba(204, 200, 255, .5);
+    --tertiary-color-extra-light: rgba(204, 200, 255, .1);
+
+    --color-light: rgba(216, 216, 251, .1);
+
+
+    /*Font Family*/
+    --font-family-primary: 'Open Sans', sans-serif;
+    --font-family-secondary: Helvetica;
+
+    /*Font Sizes*/
+    --font-huge: 2.8rem;
+    --font-large: 1.5rem;
+    --font-medium: 1.3rem;
+    --font-small: 1.2rem;
+    --font-extra-small: 1rem;
+
+    /*Font Weight*/
+    --font-bold: 700;
+    --font-semiBold: 600;
+    --font-regular: 400;
+
+    /* z-index */
+    --z-index-100: 100;
+}

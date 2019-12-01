@@ -1,0 +1,119 @@
+/* Home section styles */
+
+.band-members {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 80rem;
+    margin: auto;
+}
+
+@media(min-width: 650px) {
+    .band-members {
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+}
+
+@media(min-width: 1050px) {
+    .band-members {
+        align-items: center;
+        justify-content: flex-start;
+        min-height: inherit;
+    } 
+}
+
+@media(min-width: 1200px) {
+    .band-members {
+        flex-wrap: nowrap;
+        max-width: 100%;
+    }
+}
+
+.band-members__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3rem 0;
+}
+
+@media(min-width: 650px) {
+    .band-members__item {
+        flex: 0 1 50%;
+    }
+}
+
+@media(min-width: 1200px) {
+    .band-members__item {
+        flex: unset;
+    }
+}
+
+.band-members__image {
+    max-width: 100%;
+}
+
+@media(min-width: 900px){
+    .band-members__image {
+        opacity: .6;
+        transition: opacity .3s ease-in;
+    }
+}
+
+.band-members__name,
+.band-members__desc {
+    padding: 0;
+    margin: 0;
+    transform: translate(0, 2rem);
+    text-align: center;
+}
+
+@media(min-width: 1050px) {
+    .band-members__name,
+    .band-members__desc {
+        opacity: 0;
+        transition: opacity .3s ease-in;
+    }
+}
+
+.band-members__name {
+    font-size: var(--font-small);
+    font-weight: var(--font-bold);
+    letter-spacing: 3.8px;
+    text-transform: uppercase;
+    color: var(--tertiary-color);
+}
+
+@media(min-width: 1050px) {
+    .band-members__name {
+        font-size: var(--font-large);
+        font-weight: var(--font-bold);
+        letter-spacing: 3.8px;
+        text-transform: uppercase;
+        color: var(--tertiary-color);
+    }
+}
+
+.band-members__desc {
+    font-size: var(--font-extra-small);
+    font-weight: var(--font-regular);
+    line-height: 2;
+    letter-spacing: 3.5px;
+    color: var(--tertiary-color-lighter);
+}
+
+@media(min-width: 1050px) {
+    .band-members__desc {
+        font-size: var(--font-small);
+        font-weight: var(--font-regular);
+        letter-spacing: 3.5px;
+        color: var(--tertiary-color-lighter);
+    }
+}
+
+@media(min-width: 1050px) {
+    .band-members__item:hover > * {
+        opacity: 1;
+    }
+}

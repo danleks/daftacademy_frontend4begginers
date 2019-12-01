@@ -1,0 +1,11 @@
+/* Logo styles */
+
+.page-logo {
+    width: 50%;
+}
+
+@media(min-width: 1050px) {
+    .page-logo {
+        width: 100%;
+    }
+}
