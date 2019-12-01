@@ -1,0 +1,30 @@
+/* Button styles */
+.button {
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--tertiary-color-extra-light);
+    border-radius: 4px;
+    font-size: var(--font-small);
+    font-weight: var(--font-semiBold);
+    text-transform: uppercase;
+    color: var(--tertiary-color);
+    background-color: var(--primary-color);
+    cursor: pointer;
+    transition: background-color .3s ease-in;
+}
+
+.button:hover,
+.button:active {
+    background-color: var(--tertiary-color-extra-light);
+}
+
+.button:focus {
+    background-color: var(--tertiary-color-extra-light);
+    outline-color: var(--tertiary-color);
+}
+
+.button:disabled,
+.button:hover:disabled {
+    color: var(--tertiary-color-lighter);
+    background-color: var(--primary-color);
+    cursor: not-allowed;
+}

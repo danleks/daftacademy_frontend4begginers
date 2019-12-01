@@ -1,0 +1,59 @@
+/* Concerts section */
+
+.concerts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+}
+
+@media(min-width: 768px) {
+    .concerts {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media(min-width: 1050px) {
+    .concerts {
+        justify-content: flex-end;
+    } 
+}
+
+.concerts__info {
+    position: relative;
+    padding: 1.5rem 0;
+    text-align: left;
+}
+
+.concerts__info .button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.concerts__image {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+.concerts__date, .concerts__location {
+    padding: 0;
+    margin: 0;
+    font-size: var(--font-medium);
+    line-height: 1.4;
+}
+
+.concerts__date {
+    font-size: var(--font-large);
+    font-weight: var(--font-bold);
+    color: var(--tertiary-color);
+    letter-spacing: 3.8px;
+}
+
+.concerts__location {
+    font-weight: var(--font-semiBold);
+    color: var(--tertiary-color-lighter);
+    letter-spacing: 3.5px;
+}

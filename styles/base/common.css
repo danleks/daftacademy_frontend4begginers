@@ -1,0 +1,91 @@
+/* Common styles */
+
+html {
+    background-image: var(--bg-image);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+/*
+Lewy margines ustawiony na kontenerze z główną zawartością strony sprawia,
+że nie będzie ona nachodzić na nagłówek i stopkę niezależnie od pozycji paska przewijania.
+Na projekcie graficznym sekcja menu ma szerokość około 170px i jest oddalona od krawędzi ekranu
+o 50px, więc można założyć, że 220px marginesu będzie wartością stosunkowo bezpieczną.
+Z kolei spady (padding) nadane na kontener wyznaczają minimalną odległość, na jaką będzie oddalona
+treść strony od otaczających ją granic kontenera (wartość "0 10%" jest
+skrótem od padding-top: 0, padding-bottom: 0, padding-left: 10%, padding-right: 10%).
+Właściwość "text-align: right" przykleja zawartość do prawej strony
+(oddziałuje na elementy, które są elementami inline'owymi, np. tekst, znaczniki <a>, <span> czy elementy z nadanym stylem "display: inline-block").
+*/
+
+.page-content {
+    display: grid;
+    grid-auto-columns: 1fr;
+    padding: 6rem 3rem 0;
+}
+
+@media(min-width: 768px) {
+    .page-content {
+        padding: 8rem 3rem 0;
+    }
+}
+
+@media(min-width: 1050px) {
+    .page-content {
+        display: block;
+        margin-left: 22rem;
+        padding: 0 10%;
+        text-align: right;
+    }
+}
+
+/*
+Projekt graficzny zakłada, że każda sekcja strony będzie wypełniać całą wysokość okna przeglądarki
+lub więcej, jeśli zawartość danej sekcji jest wyższa. Dlatego świetnym rozwiązaniem
+będzie użycie jednostki "vh", która oznacza 1% wysokości okna przeglądarki z właściwością "min-height",
+która wymusza wysokość elementu na zadaną wartość lub wyższą.
+*/
+
+@media(min-width: 1050px) {
+    .content-section {
+        min-height: 100vh;
+    }    
+}
+
+.content-section__header {
+    padding: 9rem 0 3rem;
+    font-size: var(--font-huge);
+    letter-spacing: 4.5px;
+    text-align: center;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+}
+
+@media(min-width: 1050px) {
+    .content-section__header {
+        padding: 0;
+        line-height: 4;
+        text-align: right;
+    } 
+}
+
+/*
+ZAGADNIENIE PONADPROGRAMOWE
+
+Rekomendowany zestaw właściwości, które pozwalają na ukrycie tekstu w taki sposób,
+że będzie niewidoczny do standardowego użytkownika, a czytniki ekranowe wciąż będą go czytać.
+
+Więcej na ten temat: https://webaim.org/techniques/css/invisiblecontent/
+*/
+.screen-reader-only {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* End of common styles */

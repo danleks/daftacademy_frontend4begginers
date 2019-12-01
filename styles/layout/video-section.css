@@ -1,0 +1,19 @@
+/* Video section styles */
+
+.video-player {
+    width: 100%;
+    height: 22rem;
+    border-top: 3px solid var(--secondary-color);
+}
+
+@media(min-width: 768px) {
+    .video-player {
+        height: 48rem;
+    }
+}
+
+@media(min-width: 1400px) {
+    .video-player {
+        width: 85.3rem;
+    }
+}
