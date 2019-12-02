@@ -1,5 +1,12 @@
 /* Footer styles */
 
+/*
+Ustawiając sekcje stopki w pozycji 'fixed' sprawiamy,
+że niezależnie od pozycji paska przewijania elementy te będą znajdowały się
+w tej samej pozycji względem okna przeglądarki.
+Natomiast pozycję tę ustawiamy za pomocą parametrów 'top', 'bottom', 'right', 'left'.
+*/ 
+
 .page-footer {
     display: flex;
     align-items: flex-end;
