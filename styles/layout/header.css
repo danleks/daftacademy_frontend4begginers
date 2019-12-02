@@ -1,5 +1,5 @@
 /*
-Ustawiając sekcje nagłówka i stopki w pozycji 'fixed' sprawiamy,
+Ustawiając sekcje nagłówka w pozycji 'fixed' sprawiamy,
 że niezależnie od pozycji paska przewijania elementy te będą znajdowały się
 w tej samej pozycji względem okna przeglądarki.
 Natomiast pozycję tę ustawiamy za pomocą parametrów 'top', 'bottom', 'right', 'left'.
