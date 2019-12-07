@@ -2,11 +2,11 @@ const app = {
     init: () => {
         this.burgerMenu = document.querySelector('.page-hamburger');
         this.navigation = document.querySelector('.page-navigation');
-        this.navigationLinks = document.querySelectorAll('.page-navigation__link');
+        this.navigationItems = document.querySelector('.page-navigation__items');
 
          // Bind events
         this.burgerMenu.addEventListener('click', this.toggleNavigation);
-        this.navigationLinks.forEach(link => link.addEventListener('click', this.closeNavigation));
+        this.navigationItems.addEventListener('click', this.closeNavigation);
 
         return this;
     },
@@ -15,8 +15,9 @@ const app = {
         this.navigation.classList.toggle('visible');
     },
     
-    closeNavigation: closeNavigation = () => {
-        this.navigation.classList.remove('visible');
+    closeNavigation: closeNavigation = (e) => {
+        let navigationLink = e.target.classList[0].includes('page-navigation__link');
+        if (navigationLink) this.navigation.classList.remove('visible');
     }
 }
 
