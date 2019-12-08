@@ -1,4 +1,8 @@
 /* Contact section styles */
+/* .contact-section {
+    position: relative;
+} */
+
 .contact-section__wrapper {
     display: grid;
     grid-template-columns: 1fr;
