@@ -113,7 +113,7 @@
                         <header class="concerts__info">
                             <p class="concerts__date">20.12.2018</p>
                             <p class="concerts__location">Lublin, klub XXX</p>
-                            <button class="button">Buy a ticket</button>
+                            <button class="button concerts__button">Buy a ticket</button>
                         </header>
                     </article>
                     <article class="concerts__item">
@@ -128,7 +128,7 @@
                         <header class="concerts__info">
                             <p class="concerts__date">20.12.2018</p>
                             <p class="concerts__location">Lublin, klub XXX</p>
-                            <button class="button">Buy a ticket</button>
+                            <button class="button concerts__button">Buy a ticket</button>
                         </header>
                     </article>
                     <article class="concerts__item">
@@ -143,7 +143,7 @@
                         <header class="concerts__info">
                             <p class="concerts__date">20.12.2018</p>
                             <p class="concerts__location">Lublin, klub XXX</p>
-                            <button class="button">Buy a ticket</button>
+                            <button class="button concerts__button">Buy a ticket</button>
                         </header>
                     </article>
                     <article class="concerts__item">
@@ -158,7 +158,7 @@
                         <header class="concerts__info">
                             <p class="concerts__date">20.12.2018</p>
                             <p class="concerts__location">Lublin, klub XXX</p>
-                            <button class="button">Buy a ticket</button>
+                            <button class="button concerts__button">Buy a ticket</button>
                         </header>
                     </article>
                 </div>
@@ -270,7 +270,7 @@
                         Tel: 123 456 789<br/>
                         E-mail: 6bmmusic@gmail.com
                     </address>
-                    <form class="contact-section__form form">
+                    <form class="contact-section__form form" name="form" id="form">
                         <div class="form__field">
                             <label class="form__label" for="email">E-mail</label>
                             <input class="form__input" type="email" name="email" id="email" required />
@@ -283,6 +283,16 @@
                             <button class="button" type="submit">Contact us!</button>
                         </div>
                     </form>
+                </div>
+                <div class="backdrop">
+                    <div class="modal">
+                        <h2 class="modal__title">Form Summary</h2>
+                        <p class="modal__email">Email:</p>
+                        <p class="modal__topic">Topic:</p>
+                        <button class="modal__close">
+                            <span class="modal__close-innerContent"></span>
+                        </button>
+                    </div>
                 </div>
             </section>
         </main>
