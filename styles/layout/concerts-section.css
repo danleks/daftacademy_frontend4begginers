@@ -24,11 +24,13 @@
     text-align: left;
 }
 
-.concerts__info .button {
+.concerts__button,
+.concerts__success {
     position: absolute;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
+    color: var(--tertiary-color);
 }
 
 .concerts__image {
