@@ -42,6 +42,12 @@
     width: 100%;
 }
 
+.form__image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
 .form__field {
     display: flex;
     flex-direction: column;
