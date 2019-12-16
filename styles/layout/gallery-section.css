@@ -56,16 +56,37 @@
         flex: unset;
         border-top: 3px solid var(--secondary-color);
         margin: 0;
-        transition: transform .2s ease-in;
-    }
-}
+        /* transition: transform .2s ease-in; */
 
-.gallery__item:hover {
-    transform: scale(1.02);
+    }
 }
 
 .gallery__image {
     width: 100%;
     max-width: 100%;
     height: auto;
+}
+
+.gallery__image:hover {
+    animation: transformAnim 2s ease-in both;
+}
+
+.gallery__image--filter {
+    animation: filterAnim 2s ease-in both;
+}
+
+@keyframes transformAnim {
+    0% {transform: scale(1);}
+    25% {transform: scale(.5);}
+    50% {transform: scale(.5) rotate(1turn);}
+    75% {transform: scale(.5) rotate(0);}
+    100% {transform: rotate(0) scale(1);}
+}
+
+@keyframes filterAnim {
+    0% {filter: blur(0);}
+    25% {filter: blur(5px);}
+    50% {filter: blur(0) grayscale(80%);}
+    75% {filter: blur(0) grayscale(0) hue-rotate(90deg)}
+    100% {filter: blur(0) grayscale(0) hue-rotate(0)}
 }
